@@ -45,7 +45,6 @@ function processForm() {
     // Incorrect format feedback
     errorMessage('format');
     console.log('incorrect format');
-
   }
   
 }
@@ -88,7 +87,6 @@ function updateContactCount() {
 }
 
 function deleteContact(obj) {
-  // delete a contact from the array
   let i = contactListArray.indexOf(obj);
   contactListArray.splice(i, 1);
   listContacts();
@@ -151,7 +149,7 @@ function cardTemplate() {
 
   let highlight = document.createElement('div');
   highlight.classList = 'highlight';
-  highlight.innerHTML = "<p><strong>Name:<strong><p><p><strong>City:<strong><p><p><strong>Email:<strong><p>";
+  highlight.innerHTML = "<p><strong>Name:</strong></p><p><strong>City:</strong></p><p><strong>Email:</strong></p>";
 
   card.append(highlight);
   return card

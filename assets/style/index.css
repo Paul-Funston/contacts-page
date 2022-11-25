@@ -1,0 +1,48 @@
+@import "./reset.css";
+
+:root {
+  --app-light-bg: 218 224 230;
+  --app-light-acc: 248 249 250;
+  --app-blue: 108 131 206;
+  --app-orange: 211 123 90;
+
+  --app-header-height: 4rem;
+}
+
+body {
+  background-color: rgb(var(--app-light-bg));
+}
+
+.container {
+  margin-inline: auto;
+  width: 80vw;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height:var(--app-header-height);
+  background-color: rgb(var(--app-light-bg));
+}
+
+main {
+  padding-top: var(--app-header-height);
+  min-height: calc(100vh - var(--app-header-height) );
+}
+
+.grid {
+  display: grid;
+}
+
+
+.contact-count {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: rgb(var(--app-blue));
+  border-radius: 12px;
+  padding: 0.5rem;
+}

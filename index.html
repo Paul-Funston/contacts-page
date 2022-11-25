@@ -12,18 +12,37 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Source+Sans+Pro:wght@400;600;700&display=swap">
         <link rel="stylesheet" href="assets/style/index.css" media="all">
-        <script src="./assets/script/index.js" defer></script>
+        <script src="./assets/script/index.js" type="module"></script>
     </head>
     <body>
         <header>
             <div class="container">
-
+                <h1>My contacts</h1>
+                <form>
+                    <input type="text" placeholder="Contact info (name, city, email)">
+                    <input type="button" value="Add" class="add-btn">
+                </form>
             </div>
         </header>
         <main>
             <div class="container">
-
+                <div class="grid">
+                    <div class="contact-box">
+                        <p><strong>Name:</strong> Test Name</p>
+                        <p><strong>City:</strong> Test City</p>
+                        <p><strong>Email:</strong> Test Email</p>
+                    </div>
+                    <div class="contact-box">
+                        <p><strong>Name:</strong> Test Name</p>
+                        <p><strong>City:</strong> Test City</p>
+                        <p><strong>Email:</strong> Test Email</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-count">
+                <p>Number of contacts: 0</p>
             </div>
         </main>
+
     </body>
 </html>

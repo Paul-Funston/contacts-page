@@ -43,7 +43,7 @@ header .container {
 input {
   height: 3rem;
   padding: 0.5rem;
-  border-radius: 5px;
+  border-radius: 4px;
   font-size: 1rem;
 }
 
@@ -51,7 +51,7 @@ input[type="text"] {
   width: 30rem;
   margin-right: 1rem;
   background-color: rgb(var(--app-light-acc));
-  border: 1px solid rgb(40 40 40);
+  border: 1px solid rgb(40 40 40 / 0.5);
 }
 
 input[type="text"]:focus {
@@ -68,7 +68,6 @@ input[type="button"]:hover {
   background-color: rgb(var(--app-orange) / 0.5);
 }
 
-
 main {
   padding-top: var(--app-header-height);
   min-height: calc(100vh - var(--app-header-height) );
@@ -82,8 +81,8 @@ main {
 .contact-box {
   background-color: rgb(255 255 255);
   display: flex;
-  gap: 1rem;
   border-radius: 4px;
+  border: 0.5px solid rgb(40 40 40 / 0.5);
 }
 
 .contact-box > * {
@@ -99,6 +98,6 @@ main {
   bottom: 1rem;
   right: 1rem;
   background-color: rgb(var(--app-blue));
-  border-radius: 12px;
+  border-radius: 4px;
   padding: 0.5rem;
 }

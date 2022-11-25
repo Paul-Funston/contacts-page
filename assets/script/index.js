@@ -52,9 +52,7 @@ function areInputsValid(inputName, inputCity, inputEmail) {
 
 function createContact(inputName, inputCity, inputEmail) {
   let contact = new Contact(inputName, inputCity, inputEmail);
-  contactListArray.push(contact);
-
-  updateContactCount()
+  contactListArray.unshift(contact);
   listContacts()
 
 }
@@ -69,17 +67,57 @@ function deleteContact(obj) {
   let i = contactListArray.indexOf(obj);
   contactListArray.splice(i, 1);
   listContacts();
-  updateContactCount();
 
 }
 
 function listContacts() {
+  updateContactCount();
   emptyContacts();
 
-  
+  for (let index = 0; index < contactListArray.length; index++) {
+    const obj = contactListArray[index];
+    createContactCard(obj);
+  }
+}
 
+function createContactCard(obj) {
 
+  let card = cardTemplate();
+  let details = cardDetails(obj);
 
+  card.append(details);
+
+  onEvent('click', card, () => {
+    deleteContact(obj)
+  });
+
+  addressBook.append(card);
+}
+
+function cardDetails(obj) {
+  let info = document.createElement('div');
+  let name = document.createElement('p');
+  let city = document.createElement('p');
+  let email = document.createElement('p');
+
+  name.innerText = obj.name;
+  city.innerText = obj.city;
+  email.innerText = obj.email;
+
+  info.append(name, city, email);
+  return info
+}
+
+function cardTemplate() {
+  let card = document.createElement('div');
+  card.classList = 'contact-box';
+
+  let highlight = document.createElement('div');
+  highlight.classList = 'highlight';
+  highlight.innerHTML = "<p><strong>Name:<strong><p><p><strong>City:<strong><p><p><strong>Email:<strong><p>";
+
+  card.append(highlight);
+  return card
 }
 
 function emptyContacts() {

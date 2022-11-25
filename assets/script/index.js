@@ -13,10 +13,15 @@ const addBtn = select('.add-btn');
 const contactInfo = select('.contact-input');
 const addressBook = select('.grid');
 const contactCount = select('.contact-count p'); 
+const errorMsg = select('.validation-feedback');
 const contactListArray = [];
 const emailRegex = /^(?=^.{8,}$)[-_A-Za-z0-9]+([_.-][a-zA-Z0-9]+)*@[A-Za-z0-9]+([.-][a-zA-Z0-9]+)*\.[A-Za-z]{2,}$/;
 
 onEvent('click', addBtn, processForm);
+
+onEvent('click', errorMsg, () => {
+  errorMsg.style.opacity = 0;
+});
 
 function processForm() {
   let input = contactInfo.value;
@@ -29,18 +34,39 @@ function processForm() {
 
     if (areInputsValid(inputName, inputCity, inputEmail)) {
       createContact(inputName, inputCity, inputEmail);
+      errorMessage('clear');
     } else {
       //incorrect entries feedback
+      errorMessage('entry');
       console.log('incorrect Entry');
     }
 
   } else {
     // Incorrect format feedback
+    errorMessage('format');
     console.log('incorrect format');
 
   }
   
 }
+
+function errorMessage(str) {
+  if (str === 'clear') {
+    errorMsg.style.opacity = 0;
+    errorMsg.innerHTML = '';
+  } else {
+    errorMsg.style.opacity = 1;
+  }
+
+  if (str === 'format') 
+    errorMsg.innerHTML = '<p>name, city and email must be separated by a comma</p>';
+
+  if (str === "entry") {
+    errorMsg.innerHTML = '<p>One of the necessary fields is incorrect</p>'
+  }
+}
+
+
 
 function isFormatCorrect(inputArray) {
   return inputArray.length === 3;

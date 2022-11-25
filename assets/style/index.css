@@ -24,7 +24,6 @@ header {
   left: 0;
   right: 0;
 
-  /* height:var(--app-header-height); */
   background-color: rgb(var(--app-light-bg));
   box-shadow: 0 1px 8px rgb(40 40 40 / 0.5);
   padding: 1rem 0;
@@ -112,14 +111,23 @@ main {
   flex: 0 0 80px;
 }
 
-.contact-count {
+.contact-count, .validation-feedback {
   position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  background-color: rgb(var(--app-blue));
   border-radius: 4px;
   padding: 0.5rem;
   box-shadow: 0 8px 8px rgb(40 40 40 / 0.5);
+}
+.contact-count {
+  background-color: rgb(var(--app-blue));
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.validation-feedback {
+  background-color: rgb(var(--app-light-acc) / 0.9);
+  top: 1rem;
+  right: 1rem;
+  opacity: 0;
 }
 
 @media only screen and (max-width: 750px) {

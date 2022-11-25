@@ -14,43 +14,67 @@ const contactInfo = select('.contact-input');
 const addressBook = select('.grid');
 const contactCount = select('.contact-count p'); 
 const contactListArray = [];
+const emailRegex = /^(?=^.{8,}$)[-_A-Za-z0-9]+([_.-][a-zA-Z0-9]+)*@[A-Za-z0-9]+([.-][a-zA-Z0-9]+)*\.[A-Za-z]{2,}$/;
 
+onEvent('click', addBtn, processForm());
 
-function validateForm() {
-  let inputName = '' ;
-  let inputCity = '';
-  let inputEmail = '';
-// validte the input field if correct 
+function processForm() {
+  let input = contactInfo.value;
+  let inputArray = input.split(', ');
 
-// createContact(userName, userCity, userEmail)
+  if (isFormatCorrect(inputArray)) {
+    let inputName = inputArray[0].trim().toLowerCase();
+    let inputCity = inputArray[1].trim().toLowerCase();
+    let inputEmail = inputArray[2].trim().toLowerCase();
+
+    if (areInputsValid(inputName, inputCity, inputEmail)) {
+      createContact(inputName, inputCity, inputEmail);
+    } else {
+      //incorrect entries feedback
+    }
+
+  } else {
+    // Incorrect format feedback
+  }
+  
+}
+
+function isFormatCorrect(inputArray) {
+  return inputArray.length === 3;
+}
+
+function areInputsValid(inputName, inputCity, inputEmail) {
+    return (inputName !== '' || (inputCity !== '') || (!emailRegex.test(inputEmail)))
 }
 
 function createContact(inputName, inputCity, inputEmail) {
   // create a contact Object using input field
   // push it to array
   // updateContactCount()
-  // updateDisplayContacts()
+  // listContacts()
 
 }
 
 function updateContactCount() {
-  // count contacts array length
-  // update contact-count div with number
+  let n = contactListArray.length;
+  contactCount.innerText = `Number of contacts: ${n}`;
+
 }
 
 function deleteContact(obj) {
   // delete a contact from the array
-  // updateDisplayContacts()
-  // updateContactCount()
+  let i = contactListArray.indexOf(obj);
+  contactListArray.splice(i, 1);
+  listContacts();
+  updateContactCount();
 
 }
 
-function updateDisplayContacts() {
+function listContacts() {
 // loop thru array of contacts and create an HTML element for each
 // start with most recent
 }
 
 function emptyContacts() {
-// remove all contact elements from display contacts
-
+  addressBook.innerHTML = '';
 }

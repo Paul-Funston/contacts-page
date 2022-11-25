@@ -6,7 +6,7 @@
   --app-blue: 108 131 206;
   --app-orange: 211 123 90;
 
-  --app-header-height: 12rem;
+  --app-header-height: 10rem;
 }
 
 body {
@@ -26,6 +26,7 @@ header {
 
   height:var(--app-header-height);
   background-color: rgb(var(--app-light-bg));
+  box-shadow: 0 1px 8px rgb(40 40 40 / 0.5);
 }
 
 h1 {
@@ -89,6 +90,10 @@ main {
   /* max-width: 100%; */
 }
 
+.contact-box:hover {
+  box-shadow: 0 1px 8px rgb(40 40 40 / 0.5);
+
+}
 
 .contact-box > * {
   padding: 1rem;
@@ -108,4 +113,5 @@ main {
   background-color: rgb(var(--app-blue));
   border-radius: 4px;
   padding: 0.5rem;
+  box-shadow: 0 8px 8px rgb(40 40 40 / 0.5);
 }

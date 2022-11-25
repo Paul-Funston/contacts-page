@@ -47,14 +47,13 @@ function isFormatCorrect(inputArray) {
 }
 
 function areInputsValid(inputName, inputCity, inputEmail) {
-    return ((inputName !== '') && (inputCity !== '') && !(emailRegex.test(inputEmail)))
+    return ((inputName !== '') && (inputCity !== '') && (emailRegex.test(inputEmail)))
 }
 
 function createContact(inputName, inputCity, inputEmail) {
   let contact = new Contact(inputName, inputCity, inputEmail);
   contactListArray.unshift(contact);
   listContacts()
-
 }
 
 function updateContactCount() {
@@ -67,7 +66,6 @@ function deleteContact(obj) {
   let i = contactListArray.indexOf(obj);
   contactListArray.splice(i, 1);
   listContacts();
-
 }
 
 function listContacts() {
@@ -100,12 +98,25 @@ function cardDetails(obj) {
   let city = document.createElement('p');
   let email = document.createElement('p');
 
-  name.innerText = obj.name;
-  city.innerText = obj.city;
-  email.innerText = obj.email;
+  let objName = checkOverflow(obj.name)
+  let objCity = checkOverflow(obj.city)
+  let objEmail = checkOverflow(obj.email)
+
+  name.innerText = objName;
+  city.innerText = objCity;
+  email.innerText = objEmail;
 
   info.append(name, city, email);
   return info
+}
+
+function checkOverflow(str) {
+  if (str.length > 27) { 
+    let newStr = str.slice(0, 24)
+    newStr += "...";
+    return newStr;
+  }
+  return str
 }
 
 function cardTemplate() {
